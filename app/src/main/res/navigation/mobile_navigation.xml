@@ -7,13 +7,38 @@
 
     <fragment
         android:id="@+id/nav_agenda"
-        android:name="com.softchan.agendaescolar.ui.home.HomeFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.softchan.agendaescolar.ui.agenda.AgendaFragment"
+        android:label="@string/menu_agenda"
+        tools:layout="@layout/fragment_agenda" />
+
+    <fragment
+        android:id="@+id/nav_horario"
+        android:name="com.softchan.agendaescolar.ui.horario.HorarioFragment"
+        android:label="@string/horario"
+        tools:layout="@layout/fragment_horario"/>
+
+    <fragment
+        android:id="@+id/nav_tareas"
+        android:name="com.softchan.agendaescolar.ui.tareas.TareasFragment"
+        android:label="@string/home_works"
+        tools:layout="@layout/fragment_tareas"/>
+
+    <fragment
+        android:id="@+id/nav_notas"
+        android:name="com.softchan.agendaescolar.ui.notas.NotasFragment"
+        android:label="@string/notes"
+        tools:layout="@layout/fragment_notas"/>
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.softchan.agendaescolar.ui.gallery.GalleryFragment"
+        android:name="com.softchan.agendaescolar.ui.settings.SettingsFragment"
         android:label="@string/action_settings"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.softchan.agendaescolar.ui.about.AboutFragment"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_about"/>
+
 </navigation>
