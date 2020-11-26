@@ -1,5 +1,6 @@
 package com.softchan.agendaescolar.dbroom;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,7 +10,9 @@ import java.util.Date;
 @Entity
 public class Homework {
 
-    @PrimaryKey public int tarea_id;
+    @NonNull
+    @PrimaryKey
+    public int tarea_id;
 
     @ColumnInfo(name = "titulo")
     public String titulo;

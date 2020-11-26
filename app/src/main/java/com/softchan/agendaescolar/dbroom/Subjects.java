@@ -1,13 +1,16 @@
 package com.softchan.agendaescolar.dbroom;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "subjects")
 public class Subjects {
 
-    @PrimaryKey public String subject_id; // se crea con las 3 primeras letras del nombre de la asignatura y el nombre del docente
+    @NonNull
+    @PrimaryKey
+    public String subject_id; // se crea con las 3 primeras letras del nombre de la asignatura y el nombre del docente
 
     @ColumnInfo(name = "name_subject")
     public String name_subject;
