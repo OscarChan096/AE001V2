@@ -9,8 +9,8 @@ public class LessonsWithSubjects {
 
     @Embedded public Lessons lessons;
     @Relation(
-            parentColumn = "subject_lesson_id",
-            entityColumn = "subject_id"
+            parentColumn = "subject_lesson_id", // ENTIDAD PRINCIPAL
+            entityColumn = "subject_id" // ENTIDAD SECUNDARIA
     )
 
     public List<Subjects> subjects;

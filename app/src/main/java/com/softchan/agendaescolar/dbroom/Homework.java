@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity
+@Entity(tableName = "homework")
 public class Homework {
 
     @NonNull
