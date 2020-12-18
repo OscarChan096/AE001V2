@@ -19,7 +19,7 @@ public interface HomeworkDAO {
     @Query("SELECT * FROM homework WHERE tarea_id = :id")
     List<Homework> getById(int id);
 
-    @Query("SELECT titulo FROM homework WHERE titulo LIKE :titulo")
+    @Query("SELECT tarea_id,titulo FROM homework WHERE titulo LIKE :titulo")
     Homework findByTitle(String titulo);
 
     // obtener fecha de entrega

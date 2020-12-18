@@ -18,7 +18,7 @@ public class Homework {
     public String titulo;
 
     @ColumnInfo(name = "fecha_entrega")
-    public Date fecha_entrega;
+    private Date fecha_entrega;
 
     @ColumnInfo(name = "descripcion")
     public String descripcion;

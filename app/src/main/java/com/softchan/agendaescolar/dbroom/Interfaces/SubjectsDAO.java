@@ -19,13 +19,13 @@ public interface SubjectsDAO {
     @Query("SELECT * FROM subjects WHERE subject_id LIKE :id")
     Subjects getSubjectById(String id);
 
-    @Query("SELECT name_subject FROM subjects WHERE name_subject LIKE :name_subject")
+    @Query("SELECT subject_id,name_subject FROM subjects WHERE name_subject LIKE :name_subject")
     Subjects findBySubject(String name_subject);
 
-    @Query("SELECT first_name_professor FROM subjects WHERE first_name_professor LIKE :firstname")
+    @Query("SELECT subject_id,first_name_professor FROM subjects WHERE first_name_professor LIKE :firstname")
     Subjects findByFirstName(String firstname);
 
-    @Query("SELECT last_name_professor FROM subjects WHERE last_name_professor LIKE :lastname")
+    @Query("SELECT subject_id,last_name_professor FROM subjects WHERE last_name_professor LIKE :lastname")
     Subjects findByLastName(String lastname);
 
     @Insert
