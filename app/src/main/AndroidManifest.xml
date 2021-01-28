@@ -40,6 +40,24 @@
             android:theme="@style/Theme.AE001V2.NoActionBar">
         </activity>
 
+        <activity android:name=".activities.AddNotes"
+            android:label="@string/nuevanota"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
+        <activity android:name=".activities.AddHomework"
+            android:label="Nueva Tarea"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
+        <activity android:name=".activities.AddLesson"
+            android:label="Nueva Clase"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>

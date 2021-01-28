@@ -11,25 +11,43 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.softchan.agendaescolar.R;
+import com.softchan.agendaescolar.adapters.HomeworkAdapter;
+import com.softchan.agendaescolar.adapters.NoteAdapter;
+import com.softchan.agendaescolar.dbroom.DBAcces;
+import com.softchan.agendaescolar.dbroom.Homework;
+import com.softchan.agendaescolar.dbroom.Note;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TareasFragment extends Fragment {
 
-    private Tareas tareas;
+    List<Homework> homeworkDataList = new ArrayList<>();
+    LinearLayoutManager linearLayoutManager;
+    DBAcces database;
+    HomeworkAdapter adapter;
+    RecyclerView recyclerView;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        tareas =
-                new ViewModelProvider(this).get(Tareas.class);
-        View root = inflater.inflate(R.layout.fragment_tareas, container, false);
-        final TextView textView = root.findViewById(R.id.text_tareas);
-        tareas.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
+        View layout = inflater.inflate(R.layout.fragment_notas, container, false);
+        recyclerView = layout.findViewById(R.id.rview_note);
+        database = DBAcces.getInstance(getContext(),0); // revisar la inicializacion de la BD
+        homeworkDataList = database.getAllHomework();
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new HomeworkAdapter(getActivity(), homeworkDataList);
+        recyclerView.setAdapter(adapter);
+
+        //if (getArguments() != null) {
+        //((TextView) layout.findViewById(R.id.text_home)).setText(getArguments().getString(TEXT));
+        //}
+
+        return layout;
     }
 }

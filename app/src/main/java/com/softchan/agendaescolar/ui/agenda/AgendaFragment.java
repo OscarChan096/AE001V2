@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +17,33 @@ import com.softchan.agendaescolar.R;
 
 public class AgendaFragment extends Fragment {
 
-    private AgendaViewModel homeViewModel;
+    /*private static final String TEXT = "text";
+
+    public static AgendaFragment newInstance(String text) {
+        AgendaFragment frag = new AgendaFragment();
+
+        Bundle args = new Bundle();
+        args.putString(TEXT, text);
+        frag.setArguments(args);
+
+        return frag;
+    }*/
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
+        View layout = inflater.inflate(R.layout.fragment_agenda, container, false);
+
+        ListView lv = layout.findViewById(R.id.list_agenda);
+
+        //if (getArguments() != null) {
+            //((TextView) layout.findViewById(R.id.text_home)).setText(getArguments().getString(TEXT));
+        //}
+
+        return layout;
+    }
+
+    /*private AgendaViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,5 +58,5 @@ public class AgendaFragment extends Fragment {
             }
         });
         return root;
-    }
+    }*/
 }

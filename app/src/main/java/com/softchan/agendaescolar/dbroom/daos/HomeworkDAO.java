@@ -1,4 +1,4 @@
-package com.softchan.agendaescolar.dbroom.Interfaces;
+package com.softchan.agendaescolar.dbroom.daos;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -21,8 +21,6 @@ public interface HomeworkDAO {
 
     @Query("SELECT tarea_id,titulo FROM homework WHERE titulo LIKE :titulo")
     Homework findByTitle(String titulo);
-
-    // obtener fecha de entrega
 
     @Insert
     void add(Homework homework);

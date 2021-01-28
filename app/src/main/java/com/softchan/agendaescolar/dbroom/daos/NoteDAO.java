@@ -1,10 +1,8 @@
-package com.softchan.agendaescolar.dbroom.Interfaces;
+package com.softchan.agendaescolar.dbroom.daos;
 
-import androidx.annotation.NonNull;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.PrimaryKey;
 import androidx.room.Query;
 import androidx.room.Update;
 

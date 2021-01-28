@@ -1,4 +1,4 @@
-package com.softchan.agendaescolar.dbroom.Interfaces;
+package com.softchan.agendaescolar.dbroom.daos;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

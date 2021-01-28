@@ -3,6 +3,7 @@ package com.softchan.agendaescolar.dbroom;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
@@ -11,29 +12,37 @@ import java.util.Date;
 public class Homework {
 
     @NonNull
-    @PrimaryKey
-    public int tarea_id;
+    @PrimaryKey(autoGenerate = true)
+
+    @ColumnInfo(name="asignatura")
+    public String asignatura;
 
     @ColumnInfo(name = "titulo")
     public String titulo;
 
     @ColumnInfo(name = "fecha_entrega")
-    private Date fecha_entrega;
+    private String fecha_entrega;
+    //private Date fecha_entrega;
 
     @ColumnInfo(name = "descripcion")
     public String descripcion;
 
-    @ColumnInfo(name = "subject_homework_id") // "llave foranea" para relacionar los datos de esta entidad con la de asignaturas --- esta columna guardara el id de asignaturas
-    public String subject_homework_id;
-
     public Homework(){}
 
-    public int getTarea_id() {
-        return tarea_id;
+    @Ignore
+    public Homework(String asignatura, String titulo, String fecha_entrega, String descripcion){
+        this.asignatura = asignatura;
+        this.titulo = titulo;
+        this.fecha_entrega = fecha_entrega;
+        this.descripcion = descripcion;
     }
 
-    public void setTarea_id(int tarea_id) {
-        this.tarea_id = tarea_id;
+    public String getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(String asignatura) {
+        this.asignatura = asignatura;
     }
 
     public String getTitulo() {
@@ -44,11 +53,11 @@ public class Homework {
         this.titulo = titulo;
     }
 
-    public Date getFecha_entrega() {
+    public String getFecha_entrega() {
         return fecha_entrega;
     }
 
-    public void setFecha_entrega(Date fecha_entrega) {
+    public void setFecha_entrega(String fecha_entrega) {
         this.fecha_entrega = fecha_entrega;
     }
 
@@ -60,11 +69,4 @@ public class Homework {
         this.descripcion = descripcion;
     }
 
-    public String getSubject_homework_id() {
-        return subject_homework_id;
-    }
-
-    public void setSubject_homework_id(String subject_homework_id) {
-        this.subject_homework_id = subject_homework_id;
-    }
 }

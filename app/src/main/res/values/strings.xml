@@ -29,6 +29,7 @@
     <string name="profesor">Docente</string>
     <string name="aula">Aula/salón</string>
     <string name="save">Guardar</string>
+    <string name="nuevanota">Nueva nota</string>
 
     <string name="menu_agenda">Agenda</string>
     <string name="menu_gallery">Gallery</string>
