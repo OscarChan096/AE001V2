@@ -17,7 +17,7 @@ public class Lessons {
     public String lesson_id; // llave primaria creada a partir de subject_id + dia
 
     @ColumnInfo(name = "dia")
-    public String dia;
+    public int dia;
 
     @ColumnInfo(name = "name_subject")
     public String name_subject;
@@ -34,12 +34,15 @@ public class Lessons {
     @ColumnInfo(name = "aula")
     public String aula;
 
+    @ColumnInfo(name = "categoria")
+    public int categoria; // lesson = 1
+
     public String subject_id; // llave foranea --- en esta columna se guarda el id de asignaturas
 
     public Lessons(){}
 
     @Ignore
-    public Lessons(String id, String dia, String asignatura, String hora1, String hora2, String aula, String profesor, String subject_id){
+    public Lessons(String id, int dia, String asignatura, String hora1, String hora2, String aula, String profesor, String subject_id){
         this.lesson_id = id;
         this.dia = dia;
         this.name_subject = asignatura;
@@ -47,6 +50,7 @@ public class Lessons {
         this.hora_fin = hora2;
         this.aula = aula;
         this.name_professor = profesor;
+        this.categoria = 1;
     }
 
     @NonNull
@@ -58,11 +62,11 @@ public class Lessons {
         this.lesson_id = lesson_id;
     }
 
-    public String getDia() {
+    public int getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public void setDia(int dia) {
         this.dia = dia;
     }
 
@@ -113,5 +117,13 @@ public class Lessons {
 
     public void setFirst_name_professor(String name_professor) {
         this.name_professor = name_professor;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
     }
 }

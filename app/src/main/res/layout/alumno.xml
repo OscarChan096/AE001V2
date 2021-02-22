@@ -4,10 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:showIn="@layout/app_bar_user"
+    tools:showIn="@layout/app_bar_alum"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:padding="15dp">
 
-    <!-- listview o recyclerview para visualizar los datos del usuario -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rview"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/list_row_alum"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

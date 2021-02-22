@@ -30,7 +30,7 @@ public class AddLesson extends AppCompatActivity {
     private String sHora1,sHora2;
     private String sAula;
     private String sProfesor;
-    private String dia;
+    private int dia;
     private DBAcces dbAcces;
 
     @Override
@@ -43,6 +43,8 @@ public class AddLesson extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
+
+        // -------------- asignar el dia de la clase (pendiente) ----------------------
 
         spinnerAsignatura = findViewById(R.id.spinnerlessons);
         hora1 = findViewById(R.id.hora_empiezo);
@@ -76,7 +78,7 @@ public class AddLesson extends AppCompatActivity {
         return dbAcces.findBySubjects(sAsignatura);
     }
 
-    private String createId(String subject_id, String dia){
+    private String createId(String subject_id, int dia){
         return subject_id+dia;
     }
 

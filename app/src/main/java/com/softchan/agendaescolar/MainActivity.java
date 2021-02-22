@@ -13,8 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.softchan.agendaescolar.activities.AddSubject;
-import com.softchan.agendaescolar.activities.User;
-import com.softchan.agendaescolar.ui.agenda.AgendaFragment;
+import com.softchan.agendaescolar.activities.Alumno;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,11 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -135,7 +130,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(actionNew);
                 break;
             case R.id.action_user:
-                Intent actionUser = new Intent(getApplicationContext(), User.class);
+                Intent actionUser = new Intent(getApplicationContext(), Alumno.class);
                 startActivity(actionUser);
                 break;
         }

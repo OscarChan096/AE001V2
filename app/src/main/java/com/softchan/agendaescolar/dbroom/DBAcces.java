@@ -8,6 +8,7 @@ import com.softchan.agendaescolar.dbroom.daos.HomeworkDAO;
 import com.softchan.agendaescolar.dbroom.daos.LessonsDAO;
 import com.softchan.agendaescolar.dbroom.daos.NoteDAO;
 import com.softchan.agendaescolar.dbroom.daos.SubjectsDAO;
+import com.softchan.agendaescolar.dbroom.daos.AlumDAO;
 
 import java.util.List;
 
@@ -18,11 +19,14 @@ public class DBAcces {
     private LessonsDAO lessonsDAO;
     private SubjectsDAO subjectsDAO;
     private NoteDAO noteDAO;
+    private AlumDAO userDAO;
     private AppDataBase appDataBase;
     public static final int optionHomeworkDAO = 0;
     public static final int optionLessonDAO = 1;
     public static final int optionSubjectDAO = 2;
     public static final int optionNoteDAO = 3;
+    public static final int optionUserDAO = 4;
+    public static final int optionHLDAOS = 5;
 
     private DBAcces (Context context){
         Context appContext = context.getApplicationContext();
@@ -42,6 +46,13 @@ public class DBAcces {
                 break;
             case 3:
                 noteDAO = appDataBase.getNoteDAO();
+                break;
+            case 4:
+                userDAO = appDataBase.getUserDAO();
+                break;
+            case 5:
+                hwDAO = appDataBase.getHwDAO();
+                lessonsDAO = appDataBase.getLessonsDAO();
                 break;
             default:
                 break;
@@ -151,6 +162,23 @@ public class DBAcces {
 
     public void updateSubjects(Subjects subjects){
         subjectsDAO.update(subjects);
+    }
+
+    // ------------------------ UserDAO ------------------------------
+    public User getUser(){
+        return userDAO.getUser();
+    }
+
+    public void addUser(User user){
+        userDAO.add(user);
+    }
+
+    public void deleteUser(User user){
+        userDAO.delete(user);
+    }
+
+    public void updateUser(User user){
+        userDAO.update(user);
     }
 
     //https://ard-site.net/es/tutoriales/android/room-database-app-to-save-data-in-a-database-format-more-easily

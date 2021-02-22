@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softchan.agendaescolar.R;
+import com.softchan.agendaescolar.dbroom.Agenda;
 import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.Note;
 
@@ -17,13 +18,12 @@ import java.util.List;
 
 public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder> {
 
-    private List<Note> agendaDataList;
+    private List<Agenda> agendaDataList;
     private Activity context;
-    private DBAcces database;
 
-    public AgendaAdapter(Activity context, List<Note> noteDataList){
+    public AgendaAdapter(Activity context, List<Agenda> agendaDataList){
         this.context = context;
-        this.agendaDataList = noteDataList;
+        this.agendaDataList = agendaDataList;
         notifyDataSetChanged();
     }
 
@@ -38,11 +38,25 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // inicializar los datos principales
-        Note data = agendaDataList.get(position);
+        Agenda data = agendaDataList.get(position);
         // inicializar la base de datos
-        database = DBAcces.getInstance(context, 3);
         // visualizar el texto en el textview
-        //holder.nota.setText(data.getNota());
+        if(data.getCategoria() == DBAcces.optionLessonDAO){
+            holder.categoria.setText(data.getCategoria());
+            holder.titulo.setText(data.getAsignatura());
+            holder.hora.setText(data.getHora());
+            holder.aula.setText(data.getAula());
+            holder.profesor.setText(data.getNameProfesor());
+
+            // ----------------------------------- acomodar dos fechas en el recyclerview
+
+        }else{
+            holder.categoria.setText(data.getCategoria());
+            holder.titulo.setText(data.getTitulo());
+            holder.hora.setText(data.getAsignatura());
+            holder.aula.setText(data.getFechaEntrega());
+            holder.profesor.setText(data.getDescripcion());
+        }
     }
 
     @Override
@@ -51,16 +65,20 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView asigntura;
-        TextView hora_empiezo;
-        TextView hora_fin;
+        TextView categoria;
+        TextView titulo;
+        TextView hora;
         TextView aula;
         TextView profesor;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // asignacion de variables
-            //nota = itemView.findViewById(R.id.note);
+            categoria = itemView.findViewById(R.id.categoria);
+            titulo = itemView.findViewById(R.id.titulo);
+            hora = itemView.findViewById(R.id.hora);
+            aula = itemView.findViewById(R.id.aula);
+            profesor = itemView.findViewById(R.id.profesor);
 
         }
     }

@@ -1,7 +1,6 @@
 package com.softchan.agendaescolar.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,12 +11,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.softchan.agendaescolar.R;
 
-public class User extends AppCompatActivity {
+public class Alumno extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle saved){
         super.onCreate(saved);
-        setContentView(R.layout.app_bar_user);
+        setContentView(R.layout.app_bar_alum);
         Toolbar toolbar = findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();

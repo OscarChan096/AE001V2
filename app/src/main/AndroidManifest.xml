@@ -28,7 +28,7 @@
             android:theme="@style/Theme.AE001V2.NoActionBar">
         </activity>
 
-        <activity android:name=".activities.User"
+        <activity android:name=".activities.Alumno"
             android:label="@string/infouser"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AE001V2.NoActionBar">
@@ -36,7 +36,7 @@
 
         <activity android:name=".activities.AddUser"
             android:label="@string/addinfouser"
-            android:parentActivityName=".activities.User"
+            android:parentActivityName=".activities.Alumno"
             android:theme="@style/Theme.AE001V2.NoActionBar">
         </activity>
 

@@ -13,6 +13,7 @@ public class Homework {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
+    public int id;
 
     @ColumnInfo(name="asignatura")
     public String asignatura;
@@ -27,6 +28,9 @@ public class Homework {
     @ColumnInfo(name = "descripcion")
     public String descripcion;
 
+    @ColumnInfo(name = "categoria")
+    public int categoria; // homework = 0
+
     public Homework(){}
 
     @Ignore
@@ -35,6 +39,7 @@ public class Homework {
         this.titulo = titulo;
         this.fecha_entrega = fecha_entrega;
         this.descripcion = descripcion;
+        this.categoria = 0;
     }
 
     public String getAsignatura() {
@@ -69,4 +74,11 @@ public class Homework {
         this.descripcion = descripcion;
     }
 
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
 }

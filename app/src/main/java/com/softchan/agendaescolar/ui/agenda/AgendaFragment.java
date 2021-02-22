@@ -4,16 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.softchan.agendaescolar.R;
+import com.softchan.agendaescolar.adapters.AgendaAdapter;
+import com.softchan.agendaescolar.config.AgendaInfo;
+import com.softchan.agendaescolar.dbroom.DBAcces;
 
 public class AgendaFragment extends Fragment {
 
@@ -29,12 +29,27 @@ public class AgendaFragment extends Fragment {
         return frag;
     }*/
 
+    private DBAcces dbAcces;
+    private RecyclerView rvH;
+    private RecyclerView rvM;
+    private AgendaAdapter adapter;
+    private LinearLayoutManager linearLayoutManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_agenda, container, false);
 
-        ListView lv = layout.findViewById(R.id.list_agenda);
+        rvH = layout.findViewById(R.id.rviewh);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        rvH.setLayoutManager(linearLayoutManager);
+        adapter = new AgendaAdapter(getActivity(), AgendaInfo.getListAgendaH(getActivity()));
+        rvH.setAdapter(adapter);
+
+        rvM = layout.findViewById(R.id.rviewm);
+        rvM.setLayoutManager(linearLayoutManager);
+        adapter = new AgendaAdapter(getActivity(),AgendaInfo.getListAgendaM(getActivity()));
+        rvM.setAdapter(adapter);
 
         //if (getArguments() != null) {
             //((TextView) layout.findViewById(R.id.text_home)).setText(getArguments().getString(TEXT));

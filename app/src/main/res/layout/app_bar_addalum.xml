@@ -12,7 +12,7 @@
         android:theme="@style/Theme.AE001V2.PopupOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_user"
+            android:id="@+id/toolbar_adduser"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
@@ -20,6 +20,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/user" />
+    <include layout="@layout/add_alum" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
