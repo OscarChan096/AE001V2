@@ -1,5 +1,6 @@
 package com.softchan.agendaescolar.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -44,7 +45,8 @@ public class AddLesson extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        // -------------- asignar el dia de la clase (pendiente) ----------------------
+        Intent i = getIntent();
+        dia = Integer.parseInt(i.getStringExtra("dia"));
 
         spinnerAsignatura = findViewById(R.id.spinnerlessons);
         hora1 = findViewById(R.id.hora_empiezo);

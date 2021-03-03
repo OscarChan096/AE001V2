@@ -100,7 +100,7 @@ public class DBAcces {
         return lessonsDAO.getAll();
     }
 
-    public List<Lessons> getByDia(String dia){
+    public List<Lessons> getByDia(int dia){
         return lessonsDAO.getByDia(dia);
     }
 

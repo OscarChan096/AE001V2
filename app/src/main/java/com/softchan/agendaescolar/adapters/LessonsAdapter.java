@@ -35,10 +35,12 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Lessons data = lessonDataList.get(position);
-        holder.asigntura.setText(data.getName_subject());
+        holder.asigntura.setText(data.getNameSubject());
+        holder.hora_empiezo.setText(data.getHoraEmpiezo());
+        holder.hora_fin.setText(data.getHoraFin());
         //holder.hora_empiezo.setText(data.getHora());
         holder.aula.setText(data.getAula());
-        holder.profesor.setText(data.getFirst_name_professor()+data.getLast_name_professor());
+        holder.profesor.setText(data.getNameProfessor());
     }
 
     @Override

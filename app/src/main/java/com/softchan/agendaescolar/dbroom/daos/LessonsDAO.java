@@ -16,8 +16,8 @@ public interface LessonsDAO {
     @Query("SELECT * FROM lessons")
     List<Lessons> getAll();
 
-    @Query("SELECT dia FROM lessons WHERE dia LIKE :dia")
-    List<Lessons> getByDia(String dia);
+    @Query("SELECT dia FROM lessons WHERE dia=:dia")
+    List<Lessons> getByDia(int dia);
 
     @Insert
     void add(Lessons lessons);

@@ -58,6 +58,11 @@
             android:theme="@style/Theme.AE001V2.NoActionBar">
         </activity>
 
+        <activity android:name=".activities.LessonsDays"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>
