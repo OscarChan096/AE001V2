@@ -1,6 +1,7 @@
 package com.softchan.agendaescolar.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +33,6 @@ public class AddHomework extends AppCompatActivity {
     private EditText fechaEntrega;
     private EditText descripcion;
     private EditText titulo;
-    private Button btnSave;
     private DBAcces dbAcces;
 
     @Override
@@ -49,29 +49,55 @@ public class AddHomework extends AppCompatActivity {
         titulo = findViewById(R.id.titulo);
         fechaEntrega = findViewById(R.id.fechaEntrega);
         descripcion = findViewById(R.id.descripcion);
-        btnSave = findViewById(R.id.btnguardar);
 
-        spinnerAsignatura.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getSubjects()));
+        List<String> asignList = getSubjects();
 
-        btnSave.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
+        if (asignList.size() > 0) {
+            spinnerAsignatura.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, asignList));
+        }else {
+            List<String> empty = new ArrayList<>();
+            empty.add("SIN ASIGNATURAS");
+            spinnerAsignatura.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getSubjects()));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_add, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch(menuItem.getItemId()){
+            case R.id.action_save:
                 sAsignatura = spinnerAsignatura.getItemAtPosition(spinnerAsignatura.getSelectedItemPosition()).toString();
                 sTitulo = titulo.getText().toString();
                 sFechaEntrega = fechaEntrega.getText().toString();
                 sDescripcion = descripcion.getText().toString();
-                dbAcces = DBAcces.getInstance(getApplicationContext(),0);
                 Homework hw = new Homework(sAsignatura, sTitulo, sFechaEntrega, sDescripcion);
+                dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionHomeworkDAO);
                 dbAcces.addHomework(hw);
                 Toast.makeText(getApplicationContext(),"Guardado",Toast.LENGTH_SHORT).show();
-            }
-        });
-
+                titulo.setText("");
+                fechaEntrega.setText("");
+                descripcion.setText("");
+                break;
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 
     private List<String> getSubjects(){
-        dbAcces = DBAcces.getInstance(getApplicationContext(), 2);
-        return dbAcces.getAllSubjectsName();
+        List<String> subjectList = new ArrayList<>();
+        dbAcces = DBAcces.getInstance(getApplicationContext(), DBAcces.optionSubjectDAO);
+
+        for(Subjects subjects : dbAcces.getAllSubjectsName()) {
+            Log.d("metodo getSubjects",subjects.getNameSubject()+""+subjects.getSubjectId());
+            subjectList.add(subjects.getNameSubject());
+        }
+
+        return subjectList;
     }
 
 }

@@ -38,12 +38,13 @@ public class LessonsDays extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionLessonDAO);
-
         Intent intent = getIntent();
         dia = intent.getStringExtra("dia");
+        int iDia = Integer.parseInt(dia);
+        setTitle(nombreDia(iDia));
 
-        listLessons = dbAcces.getByDia(Integer.parseInt(dia));
+        dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionLessonDAO);
+        listLessons = dbAcces.getByDia(iDia);
 
         recyclerView = findViewById(R.id.rview_lessons);
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -70,6 +71,28 @@ public class LessonsDays extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(menuItem);
+    }
+
+    private String nombreDia(int dia){
+        String nombre = "";
+        switch (dia){
+            case 2:
+                nombre = "LUNES";
+                break;
+            case 3:
+                nombre = "MARTES";
+                break;
+            case 4:
+                nombre = "MIERCOLES";
+                break;
+            case 5:
+                nombre = "JUEVES";
+                break;
+            case 6:
+                nombre = "VIERNES";
+                break;
+        }
+        return nombre;
     }
 
 }

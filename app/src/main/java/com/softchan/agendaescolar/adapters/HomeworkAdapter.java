@@ -40,7 +40,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.ViewHo
         // visualizar el texto en el textview
         holder.asignatura.setText(data.getAsignatura());
         holder.titulo.setText(data.getTitulo());
-        holder.fecha_entrega.setText((CharSequence) data.getFecha_entrega());
+        holder.fecha_entrega.setText(data.getFecha_entrega());
         holder.descripcion.setText(data.getDescripcion());
     }
 

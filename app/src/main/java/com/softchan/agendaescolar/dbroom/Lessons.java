@@ -53,7 +53,6 @@ public class Lessons {
         this.categoria = 1;
     }
 
-    @NonNull
     public String getLessonId() {
         return lesson_id;
     }
@@ -101,7 +100,6 @@ public class Lessons {
     public void setSubjectId(String subject_id) {
         this.subject_id = subject_id;
     }
-
 
     public String getNameSubject() {
         return name_subject;

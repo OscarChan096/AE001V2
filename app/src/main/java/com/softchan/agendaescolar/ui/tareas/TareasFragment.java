@@ -1,10 +1,15 @@
 package com.softchan.agendaescolar.ui.tareas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +20,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softchan.agendaescolar.R;
+import com.softchan.agendaescolar.activities.AddSubject;
+import com.softchan.agendaescolar.activities.Alumno;
 import com.softchan.agendaescolar.adapters.HomeworkAdapter;
 import com.softchan.agendaescolar.adapters.NoteAdapter;
 import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.Homework;
 import com.softchan.agendaescolar.dbroom.Note;
+
+import org.jetbrains.annotations.TestOnly;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,4 +59,5 @@ public class TareasFragment extends Fragment {
 
         return layout;
     }
+
 }

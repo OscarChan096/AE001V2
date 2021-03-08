@@ -8,11 +8,13 @@ import androidx.room.Update;
 
 import com.softchan.agendaescolar.dbroom.User;
 
+import java.util.List;
+
 @Dao
 public interface AlumDAO {
 
     @Query("SELECT * FROM user")
-    User getUser();
+    List<User> getUser();
 
     @Insert
     void add(User user);

@@ -17,6 +17,7 @@ import com.softchan.agendaescolar.R;
 import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.Homework;
 import com.softchan.agendaescolar.dbroom.Lessons;
+import com.softchan.agendaescolar.dbroom.Subjects;
 
 import java.util.List;
 
@@ -66,17 +67,17 @@ public class AddLesson extends AppCompatActivity {
                 sAula = aula.getText().toString();
                 sProfesor = profesor.getText().toString();
                 dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionLessonDAO);
-                String subjectId = getSubjectId(sAsignatura);
-                String lessonId = createId(subjectId,dia);
-                Lessons lessons = new Lessons(lessonId, dia, sAsignatura, sHora1, sHora2, sAula, sProfesor, subjectId);
-                dbAcces.addLessons(lessons);
-                Toast.makeText(getApplicationContext(),"Guardado",Toast.LENGTH_SHORT).show();
+                //Subjects subjectId = getSubjectId(sAsignatura);
+                //String lessonId = createId(subjectId,dia);
+                //Lessons lessons = new Lessons(lessonId, dia, sAsignatura, sHora1, sHora2, sAula, sProfesor, subjectId);
+                //dbAcces.addLessons(lessons);
+                //Toast.makeText(getApplicationContext(),"Guardado",Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private String getSubjectId(String sAsignatura){
+    private List<Subjects> getSubjectId(String sAsignatura){
         return dbAcces.findBySubjects(sAsignatura);
     }
 
@@ -84,7 +85,7 @@ public class AddLesson extends AppCompatActivity {
         return subject_id+dia;
     }
 
-    private List<String> getSubjects(){
+    private List<Subjects> getSubjects(){
         dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionSubjectDAO);
         return dbAcces.getAllSubjectsName();
     }

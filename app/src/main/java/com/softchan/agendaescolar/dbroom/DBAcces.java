@@ -30,7 +30,7 @@ public class DBAcces {
 
     private DBAcces (Context context){
         Context appContext = context.getApplicationContext();
-        appDataBase = Room.databaseBuilder(appContext, AppDataBase.class, "dbae").build();
+        appDataBase = Room.databaseBuilder(appContext, AppDataBase.class, "dbae").allowMainThreadQueries().build();
     }
 
     private void selectEntity(int table){
@@ -76,10 +76,6 @@ public class DBAcces {
 
     public List<Homework> getByIdHomework(int id){
         return hwDAO.getById(id);
-    }
-
-    public Homework findByTitleHomework(String titulo){
-        return hwDAO.findByTitle(titulo);
     }
 
     public void addHomework(Homework homework){
@@ -140,11 +136,11 @@ public class DBAcces {
         return subjectsDAO.getAll();
     }
 
-    public List<String> getAllSubjectsName(){
+    public List<Subjects> getAllSubjectsName(){
         return subjectsDAO.getAllSubjects();
     }
 
-    public String findBySubjects(String name_subjects){
+    public List<Subjects> findBySubjects(String name_subjects){
         return subjectsDAO.findBySubject(name_subjects);
     }
 
@@ -165,7 +161,7 @@ public class DBAcces {
     }
 
     // ------------------------ UserDAO ------------------------------
-    public User getUser(){
+    public List<User> getUser(){
         return userDAO.getUser();
     }
 
@@ -180,8 +176,5 @@ public class DBAcces {
     public void updateUser(User user){
         userDAO.update(user);
     }
-
-    //https://ard-site.net/es/tutoriales/android/room-database-app-to-save-data-in-a-database-format-more-easily
-    //https://javautodidacta.es/base-de-datos-room-en-android/
 
 }

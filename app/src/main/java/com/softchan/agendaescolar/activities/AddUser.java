@@ -16,12 +16,6 @@ import com.softchan.agendaescolar.dbroom.User;
 
 public class AddUser extends AppCompatActivity {
 
-    private EditText num_control;
-    private EditText nombre_usuario;
-    private EditText escuela;
-    private EditText especialidad;
-    private EditText num_telefono;
-
     private String sNumControl;
     private String sNombreUsuario;
     private String sEscuela;
@@ -36,17 +30,17 @@ public class AddUser extends AppCompatActivity {
     public void onCreate(Bundle saved){
         super.onCreate(saved);
         setContentView(R.layout.app_bar_addalum);
-        Toolbar toolbar = findViewById(R.id.toolbar_adduser);
+        Toolbar toolbar = findViewById(R.id.toolbar_addalumn);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        num_control = findViewById(R.id.edt_id);
-        nombre_usuario = findViewById(R.id.edt_name_user);
-        escuela = findViewById(R.id.edt_name_school);
-        especialidad = findViewById(R.id.edt_especialidad);
-        num_telefono = findViewById(R.id.edt_number_phone);
+        EditText num_control = findViewById(R.id.edt_id);
+        EditText nombre_usuario = findViewById(R.id.edt_name_user);
+        EditText escuela = findViewById(R.id.edt_name_school);
+        EditText especialidad = findViewById(R.id.edt_especialidad);
+        EditText num_telefono = findViewById(R.id.edt_number_phone);
 
         sNumControl = num_control.getText().toString();
         sNombreUsuario = nombre_usuario.getText().toString();
@@ -54,14 +48,12 @@ public class AddUser extends AppCompatActivity {
         sEspecialidad = especialidad.getText().toString();
         sNumTelefono = num_telefono.getText().toString();
 
-        iNumTelefono = Integer.parseInt(sNumTelefono);
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_adduser, menu);
+        getMenuInflater().inflate(R.menu.menu_add, menu);
         return true;
     }
 
@@ -74,7 +66,7 @@ public class AddUser extends AppCompatActivity {
                 sNombreUsuario = (sNombreUsuario.length() > 0)?sNombreUsuario:"S/E";
                 sEscuela = (sEscuela.length() > 0)?sEscuela:"S/E";
                 sEspecialidad = (sEspecialidad.length() > 0)?sEspecialidad:"S/E";
-                sNumTelefono = (sNumTelefono.length() > 0)?sNumTelefono:"S/E";
+                iNumTelefono = Integer.parseInt(sNumTelefono);
                 User user = new User(sNombreUsuario, sEscuela, sEspecialidad, iNumTelefono, sNumControl);
                 dbAcces.addUser(user);
                 Toast.makeText(getApplicationContext(),"Guardado", Toast.LENGTH_SHORT).show();

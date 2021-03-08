@@ -16,7 +16,6 @@ public class Note {
     @ColumnInfo(name = "nota")
     public String nota;
 
-    @Ignore
     public Note(String nota){
         this.nota = nota;
     }

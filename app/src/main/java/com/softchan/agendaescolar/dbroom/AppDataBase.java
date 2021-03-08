@@ -10,8 +10,8 @@ import com.softchan.agendaescolar.dbroom.daos.NoteDAO;
 import com.softchan.agendaescolar.dbroom.daos.SubjectsDAO;
 import com.softchan.agendaescolar.dbroom.daos.AlumDAO;
 
-@Database(entities = {Homework.class, Lessons.class, Subjects.class, Note.class}, version = 1)
-@TypeConverters({Converters.class})
+@Database(entities = {Homework.class, Lessons.class, Subjects.class, Note.class, User.class}, version = 1)
+//@TypeConverters({Converters.class})
 public abstract class AppDataBase extends RoomDatabase {
     public abstract HomeworkDAO getHwDAO();
     public abstract LessonsDAO getLessonsDAO();

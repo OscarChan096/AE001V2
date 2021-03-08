@@ -1,6 +1,7 @@
 package com.softchan.agendaescolar.adapters;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,23 +40,24 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // inicializar los datos principales
         Agenda data = agendaDataList.get(position);
-        // inicializar la base de datos
         // visualizar el texto en el textview
         if(data.getCategoria() == DBAcces.optionLessonDAO){
-            holder.categoria.setText(data.getCategoria());
+            holder.categoria.setText("Horario");
             holder.titulo.setText(data.getAsignatura());
             holder.hora.setText(data.getHora());
             holder.aula.setText(data.getAula());
             holder.profesor.setText(data.getNameProfesor());
+            Log.d("1",data.getAsignatura());
 
             // ----------------------------------- acomodar dos fechas en el recyclerview
 
         }else{
-            holder.categoria.setText(data.getCategoria());
+            holder.categoria.setText("Homework");
             holder.titulo.setText(data.getTitulo());
             holder.hora.setText(data.getAsignatura());
             holder.aula.setText(data.getFechaEntrega());
             holder.profesor.setText(data.getDescripcion());
+            Log.d("0",data.getTitulo());
         }
     }
 
@@ -64,7 +66,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.ViewHolder
         return agendaDataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView categoria;
         TextView titulo;
         TextView hora;

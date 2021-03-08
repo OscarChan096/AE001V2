@@ -76,7 +76,6 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/account"
                 android:theme="@style/Widget.Design.TextInputLayout"/>
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

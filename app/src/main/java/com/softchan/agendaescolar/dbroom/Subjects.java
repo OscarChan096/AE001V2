@@ -10,8 +10,8 @@ import androidx.room.PrimaryKey;
 public class Subjects {
 
     @NonNull
-    @PrimaryKey
-    public String subject_id; // llave primaria se crea con las 3 primeras letras del nombre de la asignatura y numero aleatorio
+    @PrimaryKey(autoGenerate = true)
+    public int subject_id; // llave primaria se crea con las 3 primeras letras del nombre de la asignatura y numero aleatorio
 
     @ColumnInfo(name = "name_subject")
     public String name_subject;
@@ -25,13 +25,17 @@ public class Subjects {
     public Subjects(){}
 
     @Ignore
-    public Subjects(String id, String subject, String profesor, String aula){}
+    public Subjects(String subject, String profesor, String aula){
+        this.name_subject = subject;
+        this.name_professor = profesor;
+        this.aula = aula;
+    }
 
-    public String getSubjectId() {
+    public int getSubjectId() {
         return subject_id;
     }
 
-    public void setSubjectId(String subject_id) {
+    public void setSubjectId(int subject_id) {
         this.subject_id = subject_id;
     }
 

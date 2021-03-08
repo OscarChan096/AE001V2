@@ -2,6 +2,7 @@ package com.softchan.agendaescolar;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.softchan.agendaescolar.activities.AddSubject;
 import com.softchan.agendaescolar.activities.Alumno;
+import com.softchan.agendaescolar.ui.AddOptionDialog;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,10 +23,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DrawerLayout.DrawerListener{
@@ -58,13 +65,13 @@ public class MainActivity extends AppCompatActivity
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        /*mAppBarConfiguration = new AppBarConfiguration.Builder(
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_agenda, R.id.nav_settings, R.id.nav_horario, R.id.nav_about, R.id.nav_notas, R.id.nav_tareas)
-                .setDrawerLayout(drawer)
+                .setDrawerLayout(drawer) //setOpenableLayout(@Nullable Openable openableLayout)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);*/
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     /* ------------------------------ permiso para escribir en memoria -----------------------------------------*/
@@ -126,8 +133,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch(menuItem.getItemId()){
             case R.id.action_new:
-                Intent actionNew = new Intent(getApplicationContext(), AddSubject.class);
-                startActivity(actionNew);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                new AddOptionDialog().show(fragmentManager, "NUEVO");
                 break;
             case R.id.action_user:
                 Intent actionUser = new Intent(getApplicationContext(), Alumno.class);
@@ -137,12 +144,12 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(menuItem);
     }
 
-    /*@Override
+    @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }*/
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

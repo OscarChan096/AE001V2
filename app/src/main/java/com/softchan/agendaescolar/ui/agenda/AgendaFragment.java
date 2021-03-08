@@ -1,6 +1,7 @@
 package com.softchan.agendaescolar.ui.agenda;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,23 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.softchan.agendaescolar.R;
 import com.softchan.agendaescolar.adapters.AgendaAdapter;
 import com.softchan.agendaescolar.config.AgendaInfo;
-import com.softchan.agendaescolar.dbroom.DBAcces;
+import com.softchan.agendaescolar.dbroom.Agenda;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgendaFragment extends Fragment {
 
-    /*private static final String TEXT = "text";
-
-    public static AgendaFragment newInstance(String text) {
-        AgendaFragment frag = new AgendaFragment();
-
-        Bundle args = new Bundle();
-        args.putString(TEXT, text);
-        frag.setArguments(args);
-
-        return frag;
-    }*/
-
-    private DBAcces dbAcces;
     private RecyclerView rvH;
     private RecyclerView rvM;
     private AgendaAdapter adapter;
@@ -40,38 +31,26 @@ public class AgendaFragment extends Fragment {
             Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_agenda, container, false);
 
+        List<Agenda> agendaList = new ArrayList<>();
+        //agendaList.add(new Agenda("asign","test","fecha","descripcion",0));
+        //agendaList.add(new Agenda("asign2","test2","fecha2","descripcion2",0));
+        //agendaList.add(new Agenda(2,"asign","name","10","aula",1));
+        //agendaList.add(new Agenda(2,"asign2","name2","20","aula2",1));
+
+        //List<Agenda> agendaList = AgendaInfo.getListAgendaH(getActivity());
+
         rvH = layout.findViewById(R.id.rviewh);
         linearLayoutManager = new LinearLayoutManager(getContext());
         rvH.setLayoutManager(linearLayoutManager);
-        adapter = new AgendaAdapter(getActivity(), AgendaInfo.getListAgendaH(getActivity()));
+        adapter = new AgendaAdapter(getActivity(), agendaList);
         rvH.setAdapter(adapter);
 
-        rvM = layout.findViewById(R.id.rviewm);
-        rvM.setLayoutManager(linearLayoutManager);
-        adapter = new AgendaAdapter(getActivity(),AgendaInfo.getListAgendaM(getActivity()));
-        rvM.setAdapter(adapter);
-
-        //if (getArguments() != null) {
-            //((TextView) layout.findViewById(R.id.text_home)).setText(getArguments().getString(TEXT));
-        //}
+        //rvM = layout.findViewById(R.id.rviewm);
+        //rvM.setLayoutManager(linearLayoutManager);
+        //adapter = new AgendaAdapter(getActivity(),AgendaInfo.getListAgendaM(getActivity()));
+        //rvM.setAdapter(adapter);
 
         return layout;
     }
 
-    /*private AgendaViewModel homeViewModel;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(AgendaViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_agenda, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
-    }*/
 }

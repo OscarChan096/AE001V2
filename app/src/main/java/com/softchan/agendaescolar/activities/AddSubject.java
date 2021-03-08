@@ -1,6 +1,7 @@
 package com.softchan.agendaescolar.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -37,16 +38,12 @@ public class AddSubject extends AppCompatActivity {
         profesor = findViewById(R.id.edt_profesor);
         aula = findViewById(R.id.edt_aula);
 
-        sAsignatura = asignatura.getText().toString();
-        sProfesor = profesor.getText().toString();
-        sAula = aula.getText().toString();
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_addsubject, menu);
+        getMenuInflater().inflate(R.menu.menu_add, menu);
         return true;
     }
 
@@ -54,18 +51,22 @@ public class AddSubject extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch(menuItem.getItemId()){
             case R.id.action_save:
-                if (sAsignatura.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Asignatura esta vacio", Toast.LENGTH_SHORT).show();
-                }else {
+                sAsignatura = asignatura.getText().toString();
+                if (sAsignatura.length() > 0) {
+                    sProfesor = profesor.getText().toString();
+                    sAula = aula.getText().toString();
                     sProfesor = (sProfesor.equals(""))?"Sin especificar":sProfesor;
                     sAula = (sAula.equals(""))?"Sin especificar":sAula;
-                    Subjects subjects = new Subjects(createId(sAsignatura),sAsignatura,sProfesor,sAula);
-                    DBAcces dbAcces = DBAcces.getInstance(getApplicationContext(),2);
+                    Log.d("asign",sAsignatura);
+                    Subjects subjects = new Subjects(sAsignatura,sProfesor,sAula);
+                    DBAcces dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionSubjectDAO);
                     dbAcces.addSubjects(subjects);
                     Toast.makeText(getApplicationContext(),"Guardado",Toast.LENGTH_SHORT).show();
                     asignatura.setText("");
                     profesor.setText("");
                     aula.setText("");
+                }else {
+                    Toast.makeText(getApplicationContext(), "Asignatura esta vacio", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -74,7 +75,7 @@ public class AddSubject extends AppCompatActivity {
 
     private String createId(String sAsignatura){
         int random = (int) (Math.random()*50)+1;
-        return sAsignatura.substring(0,2)+random;
+        return sAsignatura.substring(0,3)+random;
     }
 
 }

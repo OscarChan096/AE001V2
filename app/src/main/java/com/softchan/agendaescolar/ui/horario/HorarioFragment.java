@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,11 +23,11 @@ import com.softchan.agendaescolar.dbroom.DBAcces;
 
 public class HorarioFragment extends Fragment implements View.OnClickListener {
 
-    private TextView lunes;
-    private TextView martes;
-    private TextView miercoles;
-    private TextView jueves;
-    private TextView viernes;
+    private ImageView lunes;
+    private ImageView martes;
+    private ImageView miercoles;
+    private ImageView jueves;
+    private ImageView viernes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
@@ -54,15 +55,28 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
         switch (index){
             case R.id.lunes:
                 Intent lun = new Intent(getActivity(), LessonsDays.class);
-                lun.putExtra("dia","2");
+                lun.putExtra("dia","4");
+                startActivity(lun);
                 break;
             case R.id.martes:
+                Intent mar = new Intent(getActivity(), LessonsDays.class);
+                mar.putExtra("dia","3");
+                startActivity(mar);
                 break;
             case R.id.miercoles:
+                Intent mie = new Intent(getActivity(), LessonsDays.class);
+                mie.putExtra("dia","2");
+                startActivity(mie);
                 break;
             case R.id.jueves:
+                Intent jue = new Intent(getActivity(), LessonsDays.class);
+                jue.putExtra("dia","5");
+                startActivity(jue);
                 break;
             case R.id.viernes:
+                Intent vie = new Intent(getActivity(), LessonsDays.class);
+                vie.putExtra("dia","6");
+                startActivity(vie);
                 break;
         }
     }

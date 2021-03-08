@@ -35,8 +35,8 @@ public class Alumno extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch(menuItem.getItemId()){
             case R.id.action_new:
-                Intent actionnew = new Intent(getApplicationContext(), AddUser.class);
-                startActivity(actionnew);
+                Intent addAlum = new Intent(getApplicationContext(), AddUser.class);
+                startActivity(addAlum);
                 break;
         }
         return super.onOptionsItemSelected(menuItem);
