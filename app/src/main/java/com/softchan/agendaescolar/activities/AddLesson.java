@@ -2,6 +2,9 @@ package com.softchan.agendaescolar.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +22,7 @@ import com.softchan.agendaescolar.dbroom.Homework;
 import com.softchan.agendaescolar.dbroom.Lessons;
 import com.softchan.agendaescolar.dbroom.Subjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddLesson extends AppCompatActivity {
@@ -27,7 +31,6 @@ public class AddLesson extends AppCompatActivity {
     private EditText hora1, hora2;
     private EditText aula;
     private EditText profesor;
-    private Button btnSave;
     private String sAsignatura;
     private String sHora1,sHora2;
     private String sAula;
@@ -54,27 +57,41 @@ public class AddLesson extends AppCompatActivity {
         hora2 = findViewById(R.id.hora_fin);
         aula = findViewById(R.id.aula);
         profesor = findViewById(R.id.profesor);
-        btnSave = findViewById(R.id.btnguardar);
 
-        spinnerAsignatura.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getSubjects()));
+        List<String> asignList = getSubjects();
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (asignList.size() > 0) {
+            spinnerAsignatura.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, asignList));
+        }else {
+            List<String> empty = new ArrayList<>();
+            empty.add("SIN ASIGNATURAS");
+            spinnerAsignatura.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getSubjects()));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_add, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch(menuItem.getItemId()){
+            case R.id.action_save:
                 sAsignatura = spinnerAsignatura.getItemAtPosition(spinnerAsignatura.getSelectedItemPosition()).toString();
                 sHora1 = hora1.getText().toString();
                 sHora2 = hora2.getText().toString();
                 sAula = aula.getText().toString();
                 sProfesor = profesor.getText().toString();
                 dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionLessonDAO);
-                //Subjects subjectId = getSubjectId(sAsignatura);
-                //String lessonId = createId(subjectId,dia);
-                //Lessons lessons = new Lessons(lessonId, dia, sAsignatura, sHora1, sHora2, sAula, sProfesor, subjectId);
-                //dbAcces.addLessons(lessons);
-                //Toast.makeText(getApplicationContext(),"Guardado",Toast.LENGTH_SHORT).show();
-            }
-        });
-
+                Lessons lessons = new Lessons(dia, sAsignatura, sHora1, sHora2, sAula, sProfesor);
+                dbAcces.addLessons(lessons);
+                Toast.makeText(getApplicationContext(),"Guardado",Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 
     private List<Subjects> getSubjectId(String sAsignatura){
@@ -85,9 +102,16 @@ public class AddLesson extends AppCompatActivity {
         return subject_id+dia;
     }
 
-    private List<Subjects> getSubjects(){
-        dbAcces = DBAcces.getInstance(getApplicationContext(),DBAcces.optionSubjectDAO);
-        return dbAcces.getAllSubjectsName();
+    private List<String> getSubjects(){
+        List<String> subjectList = new ArrayList<>();
+        dbAcces = DBAcces.getInstance(getApplicationContext(), DBAcces.optionSubjectDAO);
+
+        for(Subjects subjects : dbAcces.getAllSubjectsName()) {
+            Log.d("metodo getSubjects",subjects.getNameSubject()+""+subjects.getSubjectId());
+            subjectList.add(subjects.getNameSubject());
+        }
+
+        return subjectList;
     }
 
 }

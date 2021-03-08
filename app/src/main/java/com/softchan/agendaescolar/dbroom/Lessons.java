@@ -13,8 +13,8 @@ import java.util.Date;
 public class Lessons {
 
     @NonNull
-    @PrimaryKey
-    public String lesson_id; // llave primaria creada a partir de subject_id + dia
+    @PrimaryKey(autoGenerate = true)
+    //public String lesson_id; // llave primaria creada a partir de subject_id + dia
 
     @ColumnInfo(name = "dia")
     public int dia;
@@ -37,13 +37,13 @@ public class Lessons {
     @ColumnInfo(name = "categoria")
     public int categoria; // lesson = 1
 
-    public String subject_id; // llave foranea --- en esta columna se guarda el id de asignaturas
+    //public String subject_id; // llave foranea --- en esta columna se guarda el id de asignaturas
 
     public Lessons(){}
 
     @Ignore
-    public Lessons(String id, int dia, String asignatura, String hora1, String hora2, String aula, String profesor, String subject_id){
-        this.lesson_id = id;
+    public Lessons(int dia, String asignatura, String hora1, String hora2, String aula, String profesor){
+        //this.lesson_id = id;
         this.dia = dia;
         this.name_subject = asignatura;
         this.hora_empiezo = hora1;
@@ -51,14 +51,6 @@ public class Lessons {
         this.aula = aula;
         this.name_professor = profesor;
         this.categoria = 1;
-    }
-
-    public String getLessonId() {
-        return lesson_id;
-    }
-
-    public void setLessonId(@NonNull String lesson_id) {
-        this.lesson_id = lesson_id;
     }
 
     public int getDia() {
@@ -91,14 +83,6 @@ public class Lessons {
 
     public void setAula(String aula) {
         this.aula = aula;
-    }
-
-    public String getSubjectId() {
-        return subject_id;
-    }
-
-    public void setSubjectId(String subject_id) {
-        this.subject_id = subject_id;
     }
 
     public String getNameSubject() {

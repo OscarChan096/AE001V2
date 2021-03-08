@@ -16,7 +16,7 @@ public interface LessonsDAO {
     @Query("SELECT * FROM lessons")
     List<Lessons> getAll();
 
-    @Query("SELECT lesson_id,dia,categoria FROM lessons WHERE dia=:dia")
+    @Query("SELECT * FROM lessons WHERE dia=:dia")
     List<Lessons> getByDia(int dia);
 
     @Insert

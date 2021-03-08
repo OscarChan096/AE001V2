@@ -24,7 +24,7 @@
                 android:padding="10dp"
                 android:spinnerMode="dialog"
                 android:layout_margin="10dp"
-                android:background="@color/white"/>
+                android:background="@android:drawable/editbox_background_normal"/>
 
             <LinearLayout
                 android:padding="5dp"
@@ -33,10 +33,11 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:text="hora1"
+                    android:hint="7:00"
                     android:id="@+id/hora_empiezo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background_normal"/>
 
                 <TextView
                     android:text="a"
@@ -46,10 +47,11 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
-                    android:text="hora2"
+                    android:hint="8:00"
                     android:id="@+id/hora_fin"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/editbox_background_normal"/>
 
             </LinearLayout>
 
