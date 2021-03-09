@@ -1,16 +1,20 @@
 package com.softchan.agendaescolar.adapters;
 
 import android.app.Activity;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softchan.agendaescolar.R;
+import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.Lessons;
+import com.softchan.agendaescolar.dbroom.User;
 
 import java.util.List;
 
@@ -48,12 +52,24 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.ViewHold
         return lessonDataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void delete(int position){
+        Lessons lessons = lessonDataList.get(position);
+        DBAcces dbAcces = DBAcces.getInstance(context, DBAcces.optionLessonDAO);
+        dbAcces.deleteLessons(lessons);
+        notifyDataSetChanged();
+    }
+
+    public Lessons update(int position){
+        return lessonDataList.get(position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         TextView asigntura;
         TextView hora_empiezo;
         TextView hora_fin;
         TextView aula;
         TextView profesor;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,6 +78,14 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.ViewHold
             hora_fin = itemView.findViewById(R.id.hora_fin);
             aula = itemView.findViewById(R.id.aula);
             profesor = itemView.findViewById(R.id.profesor);
+            cardView = itemView.findViewById(R.id.cardview_lessons);
+            cardView.setOnCreateContextMenuListener(this);
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.add(this.getAdapterPosition(),0,0,"Editar");
+            menu.add(this.getAdapterPosition(),1,1,"Eliminar");
         }
     }
 }

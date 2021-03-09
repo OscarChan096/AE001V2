@@ -26,26 +26,12 @@ public class AgendaInfo {
             }
         }
 
-        for(Homework hw : dbAcces.getAllHomework()){
-            Agenda agendaHW = new Agenda(hw.getAsignatura(),hw.getTitulo(),hw.getFecha_entrega(),hw.getDescripcion(),hw.getCategoria());
-            listAgenda.add(agendaHW);
-        }
-
         return listAgenda;
     }
 
-    public static List<Agenda> getListAgendaM(Activity context){
+    public static List<Agenda> getListAgendaT(Activity context){
         List<Agenda> listAgenda = new ArrayList<>();
         DBAcces dbAcces = DBAcces.getInstance(context,DBAcces.optionHLDAOS);
-        Calendar calendar = Calendar.getInstance();
-
-        for(Lessons lessons : dbAcces.getAllLessons()){
-            if (lessons.getDia() == calendar.get(Calendar.DAY_OF_WEEK+1)) {
-                Agenda agendaL = new Agenda(lessons.getDia(), lessons.getNameSubject(), lessons.getNameProfessor(), lessons.getHoraEmpiezo() + " - "
-                        + lessons.getHoraFin(), lessons.getAula(), lessons.getCategoria());
-                listAgenda.add(agendaL);
-            }
-        }
 
         for(Homework hw : dbAcces.getAllHomework()){
             Agenda agendaHW = new Agenda(hw.getAsignatura(),hw.getTitulo(),hw.getFecha_entrega(),hw.getDescripcion(),hw.getCategoria());

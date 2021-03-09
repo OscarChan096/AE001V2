@@ -25,7 +25,7 @@ public interface HomeworkDAO {
     @Delete
     void delete(Homework homework);
 
-    @Update
-    void update(Homework homework);
+    @Query("UPDATE homework SET asignatura=:asign,titulo=:titulo,fecha_entrega=:fecha,descripcion=:descripcion WHERE id=:id")
+    void update(int id, String asign, String titulo, String fecha, String descripcion);
 
 }

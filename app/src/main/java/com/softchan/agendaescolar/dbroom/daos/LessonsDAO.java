@@ -25,7 +25,7 @@ public interface LessonsDAO {
     @Delete
     void delete(Lessons lessons);
 
-    @Update
-    void update(Lessons lessons);
+    @Query("UPDATE lessons SET name_subject=:asignatura, name_professor=:profesor, hora_empiezo=:h1, hora_fin=:h2, aula=:aula WHERE id=:id")
+    void update(int id, String asignatura, String profesor, String h1, String h2, String aula);
 
 }

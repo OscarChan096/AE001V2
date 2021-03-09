@@ -34,7 +34,7 @@
             android:theme="@style/Theme.AE001V2.NoActionBar">
         </activity>
 
-        <activity android:name=".activities.AddUser"
+        <activity android:name=".activities.AddAlum"
             android:label="@string/addinfouser"
             android:parentActivityName=".activities.Alumno"
             android:theme="@style/Theme.AE001V2.NoActionBar">
@@ -59,6 +59,30 @@
         </activity>
 
         <activity android:name=".activities.LessonsDays"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
+        <activity android:name=".activities.AlumEdit"
+            android:label="Editar Informacion"
+            android:parentActivityName=".activities.Alumno"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
+        <activity android:name=".activities.NoteEdit"
+            android:label="Editar Nota"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
+        <activity android:name=".activities.HomeworkEdit"
+            android:label="Editar Tarea"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AE001V2.NoActionBar">
+        </activity>
+
+        <activity android:name=".activities.LessonsEdit"
+            android:label="Editar Tarea"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AE001V2.NoActionBar">
         </activity>

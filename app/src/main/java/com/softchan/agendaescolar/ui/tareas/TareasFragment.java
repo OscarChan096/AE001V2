@@ -21,12 +21,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.softchan.agendaescolar.R;
 import com.softchan.agendaescolar.activities.AddSubject;
+import com.softchan.agendaescolar.activities.AlumEdit;
 import com.softchan.agendaescolar.activities.Alumno;
+import com.softchan.agendaescolar.activities.HomeworkEdit;
 import com.softchan.agendaescolar.adapters.HomeworkAdapter;
 import com.softchan.agendaescolar.adapters.NoteAdapter;
 import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.Homework;
 import com.softchan.agendaescolar.dbroom.Note;
+import com.softchan.agendaescolar.dbroom.User;
 
 import org.jetbrains.annotations.TestOnly;
 
@@ -53,11 +56,28 @@ public class TareasFragment extends Fragment {
         adapter = new HomeworkAdapter(getActivity(), homeworkDataList);
         recyclerView.setAdapter(adapter);
 
-        //if (getArguments() != null) {
-        //((TextView) layout.findViewById(R.id.text_home)).setText(getArguments().getString(TEXT));
-        //}
-
         return layout;
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case 0:
+                Homework hw = adapter.update(item.getGroupId());
+                Intent update = new Intent(getContext(), HomeworkEdit.class);
+                update.putExtra("id",hw.getId()+"");
+                update.putExtra("asign",hw.getAsignatura());
+                update.putExtra("titulo",hw.getTitulo());
+                update.putExtra("fecha",hw.getFecha_entrega());
+                update.putExtra("descripcion",hw.getDescripcion());
+                startActivity(update);
+                break;
+            case 1:
+                adapter.delete(item.getGroupId());
+                break;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
 }

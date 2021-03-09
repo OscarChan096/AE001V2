@@ -22,7 +22,7 @@ public interface NoteDAO {
     @Delete
     void delete(Note note);
 
-    @Update
-    void update(Note note);
+    @Query("UPDATE notas SET nota=:note WHERE id=:id")
+    void update(int id,String note);
 
 }

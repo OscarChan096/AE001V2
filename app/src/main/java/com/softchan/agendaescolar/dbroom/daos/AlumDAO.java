@@ -22,7 +22,7 @@ public interface AlumDAO {
     @Delete
     void delete(User user);
 
-    @Update
-    void update(User user);
+    @Query("UPDATE user SET num_control=:num_control, nombre_alumno=:nombre_alumno, escuela=:escuela, especialidad=:especialidad, num_telefono=:num_telefono WHERE id=:id")
+    void update(int id, String nombre_alumno, String escuela, String especialidad, int num_telefono, String num_control);
 
 }

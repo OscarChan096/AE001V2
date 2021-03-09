@@ -14,15 +14,13 @@ import com.softchan.agendaescolar.R;
 import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.User;
 
-public class AddUser extends AppCompatActivity {
+public class AddAlum extends AppCompatActivity {
 
-    private String sNumControl;
-    private String sNombreUsuario;
-    private String sEscuela;
-    private String sEspecialidad;
-    private String sNumTelefono;
-
-    private int iNumTelefono;
+    private EditText num_control;
+    private EditText nombre_usuario;
+    private EditText escuela;
+    private EditText especialidad;
+    private EditText num_telefono;
 
     private DBAcces dbAcces;
 
@@ -36,17 +34,11 @@ public class AddUser extends AppCompatActivity {
         ab.setDisplayShowHomeEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
 
-        EditText num_control = findViewById(R.id.edt_id);
-        EditText nombre_usuario = findViewById(R.id.edt_name_user);
-        EditText escuela = findViewById(R.id.edt_name_school);
-        EditText especialidad = findViewById(R.id.edt_especialidad);
-        EditText num_telefono = findViewById(R.id.edt_number_phone);
-
-        sNumControl = num_control.getText().toString();
-        sNombreUsuario = nombre_usuario.getText().toString();
-        sEscuela = escuela.getText().toString();
-        sEspecialidad = especialidad.getText().toString();
-        sNumTelefono = num_telefono.getText().toString();
+        num_control = findViewById(R.id.edt_id);
+        nombre_usuario = findViewById(R.id.edt_name_user);
+        escuela = findViewById(R.id.edt_name_school);
+        especialidad = findViewById(R.id.edt_especialidad);
+        num_telefono = findViewById(R.id.edt_number_phone);
 
     }
 
@@ -61,23 +53,37 @@ public class AddUser extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch(menuItem.getItemId()){
             case R.id.action_save:
-                dbAcces = DBAcces.getInstance(getApplicationContext(), DBAcces.optionUserDAO);
-                sNumControl = (sNumControl.length() > 0) ?sNumControl:generateId();
+                String sNumControl = num_control.getText().toString();
+                String sNombreUsuario = nombre_usuario.getText().toString();
+                String sEscuela = escuela.getText().toString();
+                String sEspecialidad = especialidad.getText().toString();
+                String sNumTelefono = num_telefono.getText().toString();
+                sNumControl = (sNumControl.length() > 0) ?sNumControl:"S/E";
                 sNombreUsuario = (sNombreUsuario.length() > 0)?sNombreUsuario:"S/E";
                 sEscuela = (sEscuela.length() > 0)?sEscuela:"S/E";
                 sEspecialidad = (sEspecialidad.length() > 0)?sEspecialidad:"S/E";
-                iNumTelefono = Integer.parseInt(sNumTelefono);
-                User user = new User(sNombreUsuario, sEscuela, sEspecialidad, iNumTelefono, sNumControl);
+                User user = new User(sNombreUsuario, sEscuela, sEspecialidad, generateIntegerNumTelefono(sNumTelefono), sNumControl);
+                dbAcces = DBAcces.getInstance(getApplicationContext(), DBAcces.optionUserDAO);
                 dbAcces.addUser(user);
                 Toast.makeText(getApplicationContext(),"Guardado", Toast.LENGTH_SHORT).show();
+                num_control.setText("");
+                nombre_usuario.setText("");
+                escuela.setText("");
+                especialidad.setText("");
+                num_telefono.setText("");
                 break;
         }
         return super.onOptionsItemSelected(menuItem);
     }
 
-    private String generateId(){
-        int id = (int) (Math.random()*10)+1;
-        return String.valueOf(id);
+    private int generateIntegerNumTelefono(String num){
+        int iNumTelefono;
+        if (num.length() > 0)
+            iNumTelefono = Integer.parseInt(num);
+        else
+            iNumTelefono = 0;
+
+        return iNumTelefono;
     }
 
 

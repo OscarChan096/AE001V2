@@ -24,31 +24,25 @@ public class AgendaFragment extends Fragment {
     private RecyclerView rvH;
     private RecyclerView rvM;
     private AgendaAdapter adapter;
-    private LinearLayoutManager linearLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_agenda, container, false);
 
-        List<Agenda> agendaList = new ArrayList<>();
-        //agendaList.add(new Agenda("asign","test","fecha","descripcion",0));
-        //agendaList.add(new Agenda("asign2","test2","fecha2","descripcion2",0));
-        //agendaList.add(new Agenda(2,"asign","name","10","aula",1));
-        //agendaList.add(new Agenda(2,"asign2","name2","20","aula2",1));
-
-        //List<Agenda> agendaList = AgendaInfo.getListAgendaH(getActivity());
+        List<Agenda> agendaList = AgendaInfo.getListAgendaH(getActivity());
 
         rvH = layout.findViewById(R.id.rviewh);
-        linearLayoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rvH.setLayoutManager(linearLayoutManager);
         adapter = new AgendaAdapter(getActivity(), agendaList);
         rvH.setAdapter(adapter);
 
-        //rvM = layout.findViewById(R.id.rviewm);
-        //rvM.setLayoutManager(linearLayoutManager);
-        //adapter = new AgendaAdapter(getActivity(),AgendaInfo.getListAgendaM(getActivity()));
-        //rvM.setAdapter(adapter);
+        rvM = layout.findViewById(R.id.rviewm);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
+        rvM.setLayoutManager(linearLayoutManager1);
+        adapter = new AgendaAdapter(getActivity(),AgendaInfo.getListAgendaT(getActivity()));
+        rvM.setAdapter(adapter);
 
         return layout;
     }

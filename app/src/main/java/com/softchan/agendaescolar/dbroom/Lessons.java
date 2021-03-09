@@ -14,7 +14,7 @@ public class Lessons {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    //public String lesson_id; // llave primaria creada a partir de subject_id + dia
+    public int id; // llave primaria creada a partir de subject_id + dia
 
     @ColumnInfo(name = "dia")
     public int dia;
@@ -51,6 +51,10 @@ public class Lessons {
         this.aula = aula;
         this.name_professor = profesor;
         this.categoria = 1;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getDia() {

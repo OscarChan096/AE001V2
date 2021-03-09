@@ -42,6 +42,10 @@ public class Homework {
         this.categoria = 0;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getAsignatura() {
         return asignatura;
     }

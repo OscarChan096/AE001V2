@@ -1,16 +1,20 @@
 package com.softchan.agendaescolar.adapters;
 
 import android.app.Activity;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softchan.agendaescolar.R;
+import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.Note;
+import com.softchan.agendaescolar.dbroom.User;
 
 import java.util.List;
 
@@ -46,14 +50,34 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         return noteDataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void delete(int position){
+        Note note = noteDataList.get(position);
+        DBAcces dbAcces = DBAcces.getInstance(context, DBAcces.optionNoteDAO);
+        dbAcces.deleteNote(note);
+        notifyDataSetChanged();
+    }
+
+    public Note update(int position){
+        return noteDataList.get(position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         TextView nota;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // asignacion de variables
             nota = itemView.findViewById(R.id.note);
+            cardView = itemView.findViewById(R.id.cardview_notas);
+            cardView.setOnCreateContextMenuListener(this);
 
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.add(this.getAdapterPosition(),0,0,"Editar");
+            menu.add(this.getAdapterPosition(),1,1,"Eliminar");
         }
     }
 }

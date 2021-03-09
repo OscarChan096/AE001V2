@@ -1,6 +1,5 @@
 package com.softchan.agendaescolar.dbroom;
 
-import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -11,7 +10,9 @@ import androidx.room.PrimaryKey;
 public class User {
 
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+
     @ColumnInfo(name = "num_control")
     public String num_control;
 
@@ -39,6 +40,9 @@ public class User {
         this.num_control = num_control;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public String getNombreAlumno() {
         return nombre_alumno;

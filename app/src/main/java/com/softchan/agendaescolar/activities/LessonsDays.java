@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,6 +16,7 @@ import com.softchan.agendaescolar.R;
 import com.softchan.agendaescolar.adapters.LessonsAdapter;
 import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.Lessons;
+import com.softchan.agendaescolar.dbroom.User;
 
 import java.util.List;
 
@@ -93,6 +95,30 @@ public class LessonsDays extends AppCompatActivity {
                 break;
         }
         return nombre;
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case 0:
+                Lessons lessons = adapter.update(item.getGroupId());
+                Intent update = new Intent(getApplicationContext(), LessonsEdit.class);
+                update.putExtra("id",lessons.getId()+"");
+                //update.putExtra("dia",lessons.getDia()+"");
+                update.putExtra("asign",lessons.getNameSubject());
+                update.putExtra("profesor",lessons.getNameProfessor());
+                update.putExtra("horae",lessons.getHoraEmpiezo());
+                update.putExtra("horaf",lessons.getHoraFin());
+                update.putExtra("aula",lessons.getAula());
+                //update.putExtra("categoria",lessons.getCategoria()+"");
+                startActivity(update);
+                break;
+            case 1:
+                adapter.delete(item.getGroupId());
+                break;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
 }

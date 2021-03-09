@@ -1,10 +1,9 @@
 package com.softchan.agendaescolar.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,18 +13,21 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.softchan.agendaescolar.R;
 import com.softchan.agendaescolar.dbroom.DBAcces;
-import com.softchan.agendaescolar.dbroom.Lessons;
 import com.softchan.agendaescolar.dbroom.Note;
 
-public class AddNotes extends AppCompatActivity {
+public class NoteEdit extends AppCompatActivity {
 
     private EditText notes;
+
     private String sNote;
+
+    private int id;
 
     @Override
     public void onCreate(Bundle saved){
         super.onCreate(saved);
         setContentView(R.layout.app_bar_addnotes);
+
         Toolbar toolbar = findViewById(R.id.toolbar_addnotes);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
@@ -33,6 +35,12 @@ public class AddNotes extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         notes = findViewById(R.id.edt_notes);
+
+        Intent i = getIntent();
+        id = Integer.parseInt(i.getStringExtra("id"));
+        sNote = i.getStringExtra("note");
+
+        notes.setText(sNote);
 
     }
 
@@ -50,9 +58,8 @@ public class AddNotes extends AppCompatActivity {
                 sNote = notes.getText().toString();
                 if (sNote.length() > 0) {
                     DBAcces dbAcces = DBAcces.getInstance(getApplicationContext(), DBAcces.optionNoteDAO);
-                    Note note = new Note(sNote);
-                    dbAcces.addNotes(note);
-                    Toast.makeText(getApplicationContext(),"Guardado",Toast.LENGTH_SHORT).show();
+                    dbAcces.updateNote(id,sNote);
+                    Toast.makeText(getApplicationContext(),"Actualizado",Toast.LENGTH_SHORT).show();
                     notes.setText("");
                 }else if(sNote.equals("")){
                     Toast.makeText(getApplicationContext(),"Nota vacia: ingrese texto",Toast.LENGTH_SHORT).show();

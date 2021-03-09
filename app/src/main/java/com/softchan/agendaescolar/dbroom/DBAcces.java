@@ -86,8 +86,8 @@ public class DBAcces {
         hwDAO.delete(homework);
     }
 
-    public void updateHomework(Homework homework){
-        hwDAO.update(homework);
+    public void updateHomework(int id, String asign, String titulo, String fecha, String descripcion){
+        hwDAO.update(id,asign,titulo,fecha,descripcion);
     }
 
 
@@ -108,8 +108,8 @@ public class DBAcces {
         lessonsDAO.delete(lessons);
     }
 
-    public void updateLessons(Lessons lessons){
-        lessonsDAO.update(lessons);
+    public void updateLessons(int id, String asignatura, String profesor, String h1, String h2, String aula){
+        lessonsDAO.update(id,asignatura,profesor,h1,h2,aula);
     }
 
 
@@ -126,8 +126,8 @@ public class DBAcces {
         noteDAO.delete(note);
     }
 
-    public void updateNote(Note note){
-        noteDAO.update(note);
+    public void updateNote(int id, String note){
+        noteDAO.update(id,note);
     }
 
 
@@ -173,8 +173,8 @@ public class DBAcces {
         userDAO.delete(user);
     }
 
-    public void updateUser(User user){
-        userDAO.update(user);
+    public void updateUser(int id, String nombre_alumno, String escuela, String especialidad, int num_telefono, String num_control){
+        userDAO.update(id,nombre_alumno,escuela,especialidad,num_telefono,num_control);
     }
 
 }

@@ -16,6 +16,10 @@ public class Note {
     @ColumnInfo(name = "nota")
     public String nota;
 
+    public int getId() {
+        return id;
+    }
+
     public Note(String nota){
         this.nota = nota;
     }
