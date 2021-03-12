@@ -20,18 +20,20 @@
             <EditText
                 android:id="@+id/edt_id"
                 android:hint="@string/idschool"
-                android:drawablePadding="20dp"
+                android:padding="20dp"
+                android:drawablePadding="30dp"
                 android:drawableStart="@drawable/id"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/account"
-                android:theme="@style/Widget.Design.TextInputLayout"/>
+                android:background="@android:drawable/editbox_background_normal"/>
 
             <EditText
                 android:id="@+id/edt_name_user"
                 android:hint="@string/name_alumn"
+                android:padding="20dp"
                 android:drawablePadding="20dp"
                 android:drawableStart="@drawable/account"
                 android:layout_gravity="center_horizontal"
@@ -39,11 +41,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/account"
-                android:theme="@style/Widget.Design.TextInputLayout"/>
+                android:background="@android:drawable/editbox_background_normal"/>
 
             <EditText
                 android:id="@+id/edt_name_school"
                 android:hint="@string/name_school"
+                android:padding="20dp"
                 android:drawablePadding="20dp"
                 android:drawableStart="@drawable/school"
                 android:layout_gravity="center_horizontal"
@@ -51,11 +54,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/account"
-                android:theme="@style/Widget.Design.TextInputLayout"/>
+                android:background="@android:drawable/editbox_background_normal"/>
 
             <EditText
                 android:id="@+id/edt_especialidad"
                 android:hint="@string/especialidad"
+                android:padding="20dp"
                 android:drawablePadding="20dp"
                 android:drawableStart="@drawable/especialidad"
                 android:layout_gravity="center_horizontal"
@@ -63,11 +67,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/account"
-                android:theme="@style/Widget.Design.TextInputLayout"/>
+                android:background="@android:drawable/editbox_background_normal"/>
 
             <EditText
                 android:id="@+id/edt_number_phone"
                 android:hint="@string/number_phone"
+                android:padding="20dp"
                 android:drawablePadding="20dp"
                 android:drawableStart="@drawable/number_phone"
                 android:layout_gravity="center_horizontal"
@@ -75,7 +80,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/account"
-                android:theme="@style/Widget.Design.TextInputLayout"/>
+                android:inputType="phone"
+                android:background="@android:drawable/editbox_background_normal"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

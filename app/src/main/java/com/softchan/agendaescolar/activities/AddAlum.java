@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.softchan.agendaescolar.R;
 import com.softchan.agendaescolar.dbroom.DBAcces;
 import com.softchan.agendaescolar.dbroom.User;
@@ -65,7 +66,8 @@ public class AddAlum extends AppCompatActivity {
                 User user = new User(sNombreUsuario, sEscuela, sEspecialidad, generateIntegerNumTelefono(sNumTelefono), sNumControl);
                 dbAcces = DBAcces.getInstance(getApplicationContext(), DBAcces.optionUserDAO);
                 dbAcces.addUser(user);
-                Toast.makeText(getApplicationContext(),"Guardado", Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(android.R.id.content),"Añadido", Snackbar.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Guardado", Toast.LENGTH_SHORT).show();
                 num_control.setText("");
                 nombre_usuario.setText("");
                 escuela.setText("");
@@ -77,13 +79,10 @@ public class AddAlum extends AppCompatActivity {
     }
 
     private int generateIntegerNumTelefono(String num){
-        int iNumTelefono;
         if (num.length() > 0)
-            iNumTelefono = Integer.parseInt(num);
+            return Integer.parseInt(num);
         else
-            iNumTelefono = 0;
-
-        return iNumTelefono;
+            return 0;
     }
 
 

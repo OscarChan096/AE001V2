@@ -9,8 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="turqueza">#12CED3</color>
     <color name="red">#A60000</color>
+    <color name="green">#05980B</color>
     <color name="tiles_border">#000</color>
     <color name="tiles_background">#3E127FD3</color>
     <color name="canal_color_text">#729C9C9C</color>
-    <color name="transparent">#00000000</color>
+    <color name="background_drawer">#0082AA</color>
 </resources>

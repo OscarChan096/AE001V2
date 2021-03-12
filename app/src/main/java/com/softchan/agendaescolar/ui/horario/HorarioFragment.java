@@ -23,11 +23,11 @@ import com.softchan.agendaescolar.dbroom.DBAcces;
 
 public class HorarioFragment extends Fragment implements View.OnClickListener {
 
-    private ImageView lunes;
-    private ImageView martes;
-    private ImageView miercoles;
-    private ImageView jueves;
-    private ImageView viernes;
+    private TextView lunes;
+    private TextView martes;
+    private TextView miercoles;
+    private TextView jueves;
+    private TextView viernes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
@@ -81,20 +81,4 @@ public class HorarioFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    /*private HorarioViewModel horarioViewModel;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        horarioViewModel =
-                new ViewModelProvider(this).get(HorarioViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_horario, container, false);
-        final TextView textView = root.findViewById(R.id.text_horario);
-        horarioViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
-    }*/
 }

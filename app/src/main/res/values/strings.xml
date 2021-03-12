@@ -13,9 +13,9 @@
     <string name="home_works">Tareas</string>
     <string name="notes">Notas</string>
     <string name="about">Acerca de</string>
-    <string name="build">build 0</string>
-    <string name="canal">alpha</string>
-    <string name="version">Version 0</string>
+    <string name="build">build 2</string>
+    <string name="fase">beta1</string>
+    <string name="version">Version 0.1</string>
     <string name="softchan">SOFTCHAN</string>
     <string name="by">By Oscar Chan</string>
     <string name="infouser">Informacion de usuario</string>

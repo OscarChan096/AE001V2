@@ -93,7 +93,7 @@ public class AddHomework extends AppCompatActivity {
         dbAcces = DBAcces.getInstance(getApplicationContext(), DBAcces.optionSubjectDAO);
 
         for(Subjects subjects : dbAcces.getAllSubjectsName()) {
-            Log.d("metodo getSubjects",subjects.getNameSubject()+""+subjects.getSubjectId());
+            //Log.d("metodo getSubjects",subjects.getNameSubject()+""+subjects.getSubjectId());
             subjectList.add(subjects.getNameSubject());
         }
 

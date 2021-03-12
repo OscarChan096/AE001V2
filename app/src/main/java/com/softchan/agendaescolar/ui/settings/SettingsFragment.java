@@ -11,25 +11,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.softchan.agendaescolar.R;
+import com.softchan.agendaescolar.adapters.NoteAdapter;
+import com.softchan.agendaescolar.dbroom.DBAcces;
 
 public class SettingsFragment extends Fragment {
 
-    private SettingsViewModel settingsViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        settingsViewModel =
-                new ViewModelProvider(this).get(SettingsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_settings, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
+        View layout = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        return layout;
     }
 }

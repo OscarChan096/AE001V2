@@ -52,7 +52,7 @@
         <TextView
             android:text="hora"
             android:id="@+id/hora"
-            android:padding="10dp"
+            android:padding="5dp"
             android:layout_marginLeft="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -60,7 +60,7 @@
         <TextView
             android:text="aula"
             android:id="@+id/aula"
-            android:padding="10dp"
+            android:padding="5dp"
             android:layout_marginLeft="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -68,7 +68,7 @@
         <TextView
             android:text="profesor"
             android:id="@+id/profesor"
-            android:padding="10dp"
+            android:padding="5dp"
             android:layout_marginLeft="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

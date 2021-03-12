@@ -4,82 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="30dp">
 
-
-    <ImageView
+    <TextView
         android:id="@+id/lunes"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
         android:background="@drawable/background_round"
-        android:padding="10dp"
-        android:src="@drawable/miercoles"
-        app:layout_constraintEnd_toStartOf="@+id/jueves"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="30dp"
+        android:text="LUNES"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/martes" />
 
-    <ImageView
+    <TextView
         android:id="@+id/martes"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/background_round"
-        android:src="@drawable/miercoles"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lunes"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="30dp"
+        android:text="MARTES"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/lunes"
+        tools:layout_editor_absoluteX="0dp" />
 
-
-    <ImageView
+    <TextView
         android:id="@+id/miercoles"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/background_round"
-        android:padding="10dp"
-        android:src="@drawable/lunes"
-        app:layout_constraintBottom_toTopOf="@+id/lunes"
-        app:layout_constraintEnd_toStartOf="@+id/martes"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:padding="30dp"
+        android:text="MIERCOLES"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/martes"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <ImageView
+    <TextView
         android:id="@+id/jueves"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/background_round"
-        android:src="@drawable/jueves"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lunes"
-        app:layout_constraintTop_toBottomOf="@+id/martes" />
+        android:padding="30dp"
+        android:text="JUEVES"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/miercoles"
+        tools:layout_editor_absoluteX="0dp" />
 
-
-    <ImageView
+    <TextView
         android:id="@+id/viernes"
-        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="268dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/background_round"
-        android:padding="10dp"
-        android:src="@drawable/viernes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miercoles" />
+        android:padding="30dp"
+        android:text="VIERNES"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/jueves"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,12 +43,27 @@
         android:layout_gravity="center_horizontal"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/fase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/canal"
+        android:text="@string/fase"
         android:textColor="@color/canal_color_text"
         android:textSize="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/by"
+        android:textColor="@color/canal_color_text"
+        android:textSize="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"/>
+
 </LinearLayout>

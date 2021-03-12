@@ -18,7 +18,6 @@
             android:textStyle="bold"
             android:id="@+id/id_user"
             android:padding="5dp"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -27,7 +26,6 @@
             android:text="alumno"
             android:id="@+id/nombre_alumno"
             android:padding="5dp"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -35,7 +33,6 @@
             android:text="escuela"
             android:id="@+id/nombre_escuela"
             android:padding="5dp"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -43,7 +40,6 @@
             android:text="@string/especialidad"
             android:id="@+id/especialidad_alum"
             android:padding="5dp"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -51,7 +47,6 @@
             android:text="@string/number_phone"
             android:id="@+id/num_alum"
             android:padding="5dp"
-            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
